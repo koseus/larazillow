@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        @inertiaHead
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Larazillow</title>
 
         @vite('resources/js/app.js')
-        @inertieaHead
+
 
     </head>
     <body>
