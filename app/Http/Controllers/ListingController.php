@@ -100,11 +100,12 @@ class ListingController extends Controller
         ->with('success', 'Listing has been updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+
+    public function destroy(Listing $listing)
     {
-        //
+        $listing->delete();
+
+        return redirect()->back()
+        ->with('success', 'Listing has been deleted successfully.');
     }
 }
