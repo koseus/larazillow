@@ -15,7 +15,7 @@ class UserAccountController extends Controller
 
     public function store(Request $request)
     {
-        $user = User::make(
+        $user = User::create(
             $request->validate([
                 'name' => 'required',
                 'email' => 'required|email|unique:users',
@@ -23,7 +23,7 @@ class UserAccountController extends Controller
             ])
         );
 
-        $user->save();
+        // $user->save();
         Auth::login($user);
 
         return redirect()->route('listing.index')

@@ -69,13 +69,18 @@
         <button type="submit" class="btn-primary">
           Create
         </button>
+        <div class="mt-2 text-center">
+          <Link :href="route('login')" class="text-sm text-gray-500">
+            Already have an account? Log in here.
+          </Link>
+        </div>
       </div>
     </div>
   </form>
 </template>
 
 <script setup>
-import { useForm } from '@inertiajs/inertia-vue3'
+import { useForm, Link } from '@inertiajs/inertia-vue3'
 
 const form = useForm({
   bedrooms: 0,
