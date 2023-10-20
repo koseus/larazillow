@@ -6,7 +6,7 @@
           E-mail (username)
         </label>
         <input id="email" v-model="form.email" class="input" type="text" />
-        <div class="input-error">Potential errors</div>
+        <div v-if="form.errors.email" class="input-error">{{ form.errors.email }}</div>
       </div>
 
       <div class="mt-4">
@@ -14,6 +14,7 @@
           Password
         </label>
         <input id="password" v-model="form.password" class="input" type="password" />
+        <div v-if="form.errors.password" class="input-error">{{ form.errors.password }}</div>
       </div>
 
       <div class="mt-4">
