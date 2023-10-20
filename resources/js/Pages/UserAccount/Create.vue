@@ -52,5 +52,5 @@ const form = useForm({
 
 })
 
-const register = () => form.post(route(''))
+const register = () => form.post(route('user-account.store'))
 </script>
