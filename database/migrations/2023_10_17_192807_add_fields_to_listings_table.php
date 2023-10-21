@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('listings', function (Blueprint $table) {
-            // $table->unsignedTinyInteger('bedrooms');
-            // $table->unsignedTinyInteger('bathrooms');
-            // $table->unsignedSmallInteger('area');
+            $table->unsignedTinyInteger('bedrooms');
+            $table->unsignedTinyInteger('bathrooms');
+            $table->unsignedSmallInteger('area');
 
-            // $table->tinyText('city');
-            // $table->tinyText('zipcode');
-            // $table->tinyText('street');
-            // $table->tinyText('street_num');
+            $table->tinyText('city');
+            $table->tinyText('zipcode');
+            $table->tinyText('street');
+            $table->tinyText('street_num');
 
-            // $table->unsignedInteger('price');
+            $table->unsignedInteger('price');
 
 
         });
