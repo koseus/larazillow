@@ -16,16 +16,18 @@
 <script setup>
 import { Inertia } from '@inertiajs/inertia'
 import {reactive, watch} from 'vue'
+import {debounce} from 'lodash'
 
 const filterForm = reactive({
   deleted : false,
 })
 
 watch(
-  filterForm, () => Inertia.get(
+  // 1 second has to pass before request is sent
+  filterForm, debounce(() => Inertia.get(
     route('realtor.listing.index'),
     filterForm,
     {preserveScroll: true, preserveState: true},
-  ),
+  ), 1000),
 )
 </script>
