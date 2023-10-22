@@ -17,6 +17,10 @@ class Listing extends Model
         'area', 'city', 'zipcode', 'street', 'street_num', 'price'
     ];
 
+    protected $sortable = [
+        'price', 'created_at'
+    ];
+
     public function owner(): BelongsTo
     {
         return $this->belongsTo(
@@ -53,6 +57,11 @@ class Listing extends Model
         )->when(
             $filters['deleted'] ?? false,
             fn ($query, $value) => $query->withTrashed()
+        )->when(
+            $filters['by'] ?? false,
+            fn ($query, $value) =>
+            !in_array($value, $this->sortable)
+                ? $query : $query->orderBy($value, $filters['order'] ?? 'desc')
         );
     }
 }
