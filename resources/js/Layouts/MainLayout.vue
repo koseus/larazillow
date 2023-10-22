@@ -15,7 +15,7 @@
             {{ user.name }}
           </Link>
           <Link
-            :href="route('listing.create')"
+            :href="route('realtor.listing.create')"
             class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium p-2 rounded"
           >
             + New Listing

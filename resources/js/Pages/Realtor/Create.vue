@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="update">
+  <form @submit.prevent="create">
     <div class="grid grid-cols-6 gap-4">
       <div class="col-span-2">
         <label class="label">Bedrooms</label>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="col-span-2">
-        <label class="label">ZipCode</label>
+        <label class="label">Zipcode</label>
         <input v-model="form.zipcode" type="text" class="input" />
         <div v-if="form.errors.zipcode" class="input-error">
           {{ form.errors.zipcode }}
@@ -66,37 +66,26 @@
       </div>
 
       <div>
-        <button type="submit" class="btn-primary">Edit</button>
+        <button type="submit" class="btn-primary">
+          Create
+        </button>
       </div>
     </div>
   </form>
 </template>
 
 <script setup>
-import { useForm } from '@inertiajs/inertia-vue3'
+import { useForm, Link } from '@inertiajs/inertia-vue3'
 
-const props = defineProps({
-  listing: Object,
-})
 const form = useForm({
-  bedrooms: props.listing.bedrooms,
-  bathrooms: props.listing.bathrooms,
-  area: props.listing.area,
-  city: props.listing.city,
-  street: props.listing.street,
-  zipcode: props.listing.zipcode,
-  street_num: props.listing.street_num,
-  price: props.listing.price,
+  bedrooms: 0,
+  bathrooms: 0,
+  area: 0,
+  city: null,
+  zipcode: null,
+  street: null,
+  street_num: null,
+  price: 0,
 })
-const update = () => form.put(route('listing.update', {listing: props.listing.id}))
+const create = () => form.post(route('realtor.listing.store'))
 </script>
-
-<style scoped>
-label {
-margin-right: 2em;
-}
-
-div {
-padding: 2px
-}
-</style>
