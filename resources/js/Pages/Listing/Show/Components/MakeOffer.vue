@@ -31,7 +31,8 @@
 import Price from '@/Components/Price.vue'
 import Box from '@/Components/UI/Box.vue'
 import { useForm } from '@inertiajs/inertia-vue3'
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
+import { debounce } from 'lodash'
 
 const props = defineProps({
   listingId: Number,
@@ -53,4 +54,12 @@ const makeOffer = () => form.post(
 const difference = computed(() =>form.amount - props.price )
 const minimum = computed(() => props.price / 2)
 const maximum = computed(() => props.price * 2)
+
+
+const emit = defineEmits(['offerUpdated'])
+
+watch(() => form.amount,
+  debounce((value) => emit('offerUpdated', value), 200),
+)
+
 </script>
