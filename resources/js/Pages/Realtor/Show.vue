@@ -10,7 +10,12 @@
       </div>
     </Box>
     <div v-else class="md:col-span-7 items-center">
-      There are offers
+      <Offer
+        v-for="offer in listing.offers"
+        :key="offer.id" class="mb-4"
+        :offer="offer"
+        :listing-price="listing.price"
+      />
     </div>
     <Box class="md:col-span-5">
       <template #header>Basic Info</template>
@@ -26,6 +31,7 @@ import Box from '@/Components/UI/Box.vue'
 import Price from '@/Components/Price.vue'
 import ListingSpace from '@/Components/ListingSpace.vue'
 import ListingAddress from '@/Components/ListingAddress.vue'
+import Offer from '@/Pages/Realtor/Show/Components/Offer.vue'
 
 import { Link } from '@inertiajs/inertia-vue3'
 import { computed } from 'vue'
