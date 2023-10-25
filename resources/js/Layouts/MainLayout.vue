@@ -68,9 +68,3 @@ const user = computed(
 // setInterval(() => timer.value++, 1000)
 </script>
 
-<style scoped>
-.success{
-    background-color: green;
-    color: white;
-}
-</style>
