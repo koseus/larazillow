@@ -27,14 +27,13 @@ class ListingController extends Controller
             'priceFrom', 'priceUpTo', 'numBedrooms', 'numBathrooms', 'areaFrom', 'areaUpTo'
         ]);
 
-
-
         return inertia(
             'Listing/Index',
             [
                 'filters' => $filters,
                 'listings' => Listing::mostRecent()
                     ->filter($filters)
+                    ->withoutSold()
                     ->paginate(6)
                     ->withQueryString()
             ]
