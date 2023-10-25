@@ -11,7 +11,7 @@
           Difference is <Price :price="difference" />
         </div>
         <div class="text-gray-500 text-sm ">
-          by John Doe
+          Placed by {{ offer.bidder.name }}
         </div>
         <div class="text-gray-500 text-sm ">
           Placed on {{ offerDate }}
@@ -20,8 +20,9 @@
 
       <div>
         <Link
+          :href="route('realtor.offer.accept', { offer: offer.id })"
           class="btn-outline text-xs font-medium"
-          as="button"
+          as="button" method="put"
         >
           Accept
         </Link>
