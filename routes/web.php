@@ -55,10 +55,8 @@ Route::prefix('realtor')
         'listing/{listing/restore',
         [RealtorListingController::class, 'restore']
         )->withTrashed();
-
     Route::resource('listing', RealtorListingController::class
         )->withTrashed();
-
     Route::name('offer.accept')
         ->put(
             'offer/{offer}/accept',
