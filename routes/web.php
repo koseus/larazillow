@@ -11,6 +11,7 @@ use App\Http\Controllers\RealtorListingImageController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\IndexController;
 
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +64,12 @@ Route::get('email/verify/{id}/{hash}', function (EmailVerificationRequest $reque
     return redirect(route('listing.index'))
         ->with('success', 'Email has been verified successfully.');
 })->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request){
+    $request->user()->SendEmailVerificationNotification();
+
+    return back()->with('success', 'Verification link has been sent.');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::resource('user-account', UserAccountController::class)
     ->only(['create', 'store']);
